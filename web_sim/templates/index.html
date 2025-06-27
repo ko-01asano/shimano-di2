@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wind Tunnel Bicycle Simulation</title>
+</head>
+<body>
+    <h1>Wind Tunnel Simulation</h1>
+    <form action="/simulate" method="post">
+        <label for="velocity">Velocity (m/s):</label>
+        <input type="number" step="any" name="velocity" value="{{ velocity|default('') }}" required><br>
+        <label for="area">Frontal Area (m^2):</label>
+        <input type="number" step="any" name="area" value="{{ area|default('') }}" required><br>
+        <label for="drag_coeff">Drag Coefficient (Cd):</label>
+        <input type="number" step="any" name="drag_coeff" value="{{ drag_coeff|default('') }}" required><br>
+        <button type="submit">Simulate</button>
+    </form>
+    {% if result %}
+    <p>{{ result }}</p>
+    {% endif %}
+    {% if error %}
+    <p style="color:red">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
